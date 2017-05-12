@@ -1,6 +1,12 @@
 Rails.application.routes.draw do
-  get 'welcome/index'
-
-  root 'welcome#index'
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+	#root to: 'gif#cool'
+	root 'sessions#home'
+	get '/home' => 'sessions#home'
+	get '/login' => 'sessions#new'
+	post '/login' => 'sessions#create'
+	get '/logout' => 'sessions#destroy'
+	resources :users
+	get '/signup' => 'users#new'
+	post '/signup' => 'users#create'
+	
 end
