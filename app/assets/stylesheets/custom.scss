@@ -33,23 +33,20 @@ h1 {
   margin-bottom: 30px;
   text-align: center;
 }
-
-img.vitoria{
-	border: 1px solid #777;
-	display: block;
-    margin-left: auto;
-    margin-right: auto
-	
-}
+body{
+  background-image: image-url('fundo.jpg');
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  }
 
 input, textarea, select, .uneditable-input {
   border: 1px solid #bbb;
   width: 100%;
   margin-bottom: 15px;
 }
-.faggot{
-	color: green;
-}
+
 aside {
   section.user_info {
     margin-top: 20px;
