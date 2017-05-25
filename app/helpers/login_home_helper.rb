@@ -1,0 +1,2 @@
+module LoginHomeHelper
+end
