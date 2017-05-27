@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
-	#root to: 'gif#cool'
-	root 'sessions#home'
+	root to: 'sessions#home'
 	get '/home' => 'sessions#home'
 	get '/login' => 'sessions#new'
 	post '/login' => 'sessions#create'
