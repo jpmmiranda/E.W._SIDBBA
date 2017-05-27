@@ -1,11 +1,6 @@
 Rails.application.routes.draw do
-	root to: 'sessions#home'
-	get '/home' => 'sessions#home'
-	get '/login' => 'sessions#new'
-	post '/login' => 'sessions#create'
-	get '/logout' => 'sessions#destroy'
-	get '/signup' => 'users#new'
-	post '/signup' => 'users#create'
-	get '/login_home'=> 'login_home#home'
+  devise_for :users
+	root to: 'home#home'
+	get '/home' => 'home#home'
 	
 end
