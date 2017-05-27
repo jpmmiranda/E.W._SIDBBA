@@ -4,8 +4,8 @@ Rails.application.routes.draw do
 	get '/login' => 'sessions#new'
 	post '/login' => 'sessions#create'
 	get '/logout' => 'sessions#destroy'
-	resources :users
 	get '/signup' => 'users#new'
 	post '/signup' => 'users#create'
+	get '/login_home'=> 'login_home#home'
 	
 end
