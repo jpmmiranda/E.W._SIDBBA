@@ -28,12 +28,19 @@
       <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="/users/sign_up">Signup</a></li>
-            <li><a href="/users/sign_in">Login</a></li>
+
+            <%= link_to '/alertas/index', class: "btn btn-default" do %>
+    <i class="glyphicon glyphicon-bell"></i> 
+<% end %>
+            <%= link_to 'Sign out', destroy_user_session_path, :method => :delete %>
+            
           </ul>
+         
         </div>
       </div>
     </nav>
+      <div>Signed in as... <%= getUtilizador %></div>
+
     <div class="container">
       <%= yield %>
     </div>

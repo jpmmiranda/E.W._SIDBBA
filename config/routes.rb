@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  get 'alertas/index'
+
+  get 'inicial/index'
+
+  get 'distritos/index'
+
   devise_for :users
 	root to: 'home#home'
 	get '/home' => 'home#home'
