@@ -13,8 +13,8 @@
 ActiveRecord::Schema.define(version: 20170605163401) do
 
   create_table "locais", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer "local_longitude"
-    t.integer "local_latitude"
+    t.decimal "local_longitude", precision: 8, scale: 6
+    t.decimal "local_latitude",  precision: 8, scale: 6
   end
 
   create_table "registos", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
