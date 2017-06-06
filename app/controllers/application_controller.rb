@@ -6,11 +6,6 @@ class ApplicationController < ActionController::Base
     request.env['omniauth.origin'] || stored_location_for(resource) || '/inicial/index'
   end
   
-  def current_user
-    @current_user = "errado"
-    @current_user ||= User.find(session[:user_id])
-  end
-  helper_method :current_user
 
   def authorize
     redirect_to '/users/sign_in' unless current_user

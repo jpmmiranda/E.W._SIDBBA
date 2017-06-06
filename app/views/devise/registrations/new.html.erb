@@ -1,32 +1,28 @@
 <h2>Sign up</h2>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= devise_error_messages! %>
+<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+    <%= f.error_notification %>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
+  <div class="form-group">
+        <%= f.input :email, required: true %>
   </div>
 
-  <div class="field">
-    <%= f.label :nome %><br />
-    <%= f.text_field :nome, autocomplete: "off" %>
+   <div class="form-group">
+    <%= f.input :nome, required: true, autofocus: true %>
   </div>
 
-  <div class="field">
-    <%= f.label :password %>
+  <div class="form-inputs">
     <% if @minimum_password_length %>
     <em>(<%= @minimum_password_length %> characters minimum)</em>
     <% end %><br />
-    <%= f.password_field :password, autocomplete: "off" %>
+    <%= f.input :password, autocomplete: "off" %>
   </div>
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
+  <div class="form-inputs">
+        <%= f.input :password_confirmation, required: true %>
   </div>
 
-  <div class="actions">
+  <div class="form-actions">
     <%= f.submit "Sign up" %>
   </div>
 <% end %>
