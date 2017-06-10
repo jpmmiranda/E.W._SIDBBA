@@ -36,13 +36,13 @@ gem 'bcrypt','~>3.1.11'
 gem 'devise'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
-
+gem 'active_model_serializers' 
 gem 'gmaps4rails'
 #gem 'underscore-rails' 
 gem 'autoprefixer-rails'
 gem 'simple_form'
 gem 'chartkick'
-
+gem 'grape'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri

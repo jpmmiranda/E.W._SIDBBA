@@ -1,4 +1,11 @@
 Rails.application.routes.draw do
+
+  namespace :api, defaults:{ format: :json }do
+    namespace :v1 do
+      resources :registos, :only =>[:create]
+      resources :locais, :only => [:create]
+    end
+  end
   get 'locais/index'
 
   get 'historico/index'

@@ -1,18 +1,18 @@
-require 'socket'
+require 'httparty'
 
 
-class Cliente
+class Sensor
 
   def initialize(longitude,latitude)
-    @s = TCPSocket.open('localhost', 8000)
     @longitude = longitude #longitude do xdk
     @latitude = latitude #latitude do xdk
     enviaCoords
   end
 
   def enviaCoords
-    @s.puts @longitude
-    @s.puts @latitude
+    @urlstring_to_post = 'http://localhost:3000/api/v1/locais/?local_latitude='+@latitude+'&local_longitude='+@longitude
+    @result = HTTParty.post(@urlstring_to_post.to_str)
+    geraDados
   end
 
   def geraDados
@@ -58,7 +58,7 @@ class Cliente
 end
 
 #Criação de clientes
-c=Cliente.new(ARGV[0],ARGV[1])
+c=Sensor.new(ARGV[0],ARGV[1])
 
 # Signal catching
 def shut_down
@@ -89,7 +89,7 @@ threadMensagem = Thread.new{
 	c.servidorClose
 }
 
-threadDados.join
-threadMensagem.join
+##threadDados.join
+##threadMensagem.join
 
 
