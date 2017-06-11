@@ -1,4 +1,4 @@
-class Api::V1::Registos_Controller < ApplicationController
+class Api::V1::RegistosController < ApplicationController
   respond_to :json
    skip_before_action :verify_authenticity_token
 
