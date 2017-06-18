@@ -45,35 +45,34 @@
     </nav>
       <h1>Bem vindo <%=current_user.nome %></h1>
       
-                <h1>Seus locais favoritos </h1>
       
     <div class="container">
   <div id="map" style='width: 800px; height: 400px;'></div>
     <script type="text/javascript">
+      var id;
       function initMap() {
+          var markers
 
              handler = Gmaps.build('Google');
-             handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){   
-                var markers = handler.addMarkers(<%=raw @hash.to_json %>);
-                markers.title = 'ds'
+             handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){ 
+ 
+                markers = handler.addMarkers(<%=raw @hash.to_json %>);
                 handler.bounds.extendWith(markers);
                 handler.fitMapToBounds();
-              });   
-        
-     /*var user_lat,user_lng;
-      var map;
-      function initMap() {
-        map = new google.maps.Map(document.getElementById('map'), {
-          center: {lat:38.722349, lng: -9.138908},
-          zoom: 10
-        });
-      var marker = new google.maps.Marker({
-          position: {lat:locais[0],lng:locais[1]},
-          map: map,
-          title: 'Hello World!'
-        });*/
+
+                _.each(markers, function(marker){
+                infowindow.close();
+
+                google.maps.event.trigger(marker.getServiceObject(), 'click');
+              });
+                handler.fitMapToBounds();
+              });  
       }
+      function verHistorico(id) {
+                window.location='http://localhost:3000/historico/index?id='+id;
+    }
     </script>
+
 <script src="//maps.google.com/maps/api/js?key=AIzaSyBW5FzSp9Va2dLmcIZbrQhXQUegkNjd8G8&callback=initMap" async defer></script>
 </div>
       <%= yield %>

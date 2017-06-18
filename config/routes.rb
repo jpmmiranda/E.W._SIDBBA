@@ -16,7 +16,10 @@ Rails.application.routes.draw do
 
   get 'inicial/index'
 
-  get 'distritos/index'
+  get 'historico/historicoTemperatura' => 'historico#historicoTemperatura'
+  get 'historico/historicoRuido' => 'historico#historicoRuido'
+  get 'historico/historicoHumidade' => 'historico#historicoHumidade'
+
 
   devise_for :users, :controllers => { registrations: 'registrations' }
 

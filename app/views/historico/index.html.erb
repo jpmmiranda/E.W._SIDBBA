@@ -5,17 +5,21 @@
 <div class="row">
   <div class="col-sm-6">
      <strong>Temperaturas:</strong>
-         <%=line_chart @registo.where(:id=> 1).group("month(data)").group("day(data)").average(:temperatura)%>
+         <%=line_chart historico_historicoTemperatura_path(id: params[:id])%>
+  </div>
+
+  <div class="col-sm-6">
+     <strong>Humidade:</strong>
+         <%=line_chart historico_historicoHumidade_path(id: params[:id])%>
   </div>
 	
-	<div class="col-sm-6">
-     <strong>Humidade:</strong>
-         <%=line_chart @registo.where(:id=> 1).group("month(data)").group("day(data)").average(:humidade)%>
-  </div>
  </div>
+
 <div class="row">
   <div class="col-sm-6">
-     <strong>Ruído:</strong>
-         <%=line_chart @registo.where(:id=> 1).group("month(data)").group("day(data)").average(:ruido)%>
+     <strong>Ruido:</strong>
+         <%=line_chart historico_historicoRuido_path(id: params[:id])%>
   </div>
+
+  
  </div>
