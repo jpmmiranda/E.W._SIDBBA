@@ -6,6 +6,7 @@ Rails.application.routes.draw do
       resources :locais, :only => [:create]
     end
   end
+  
   get 'locais/index'
 
   get 'historico/index'
