@@ -31,23 +31,25 @@
 
       <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+
+          <ul class="nav navbar-nav navbar-right">
+
+            <li><%= link_to 'Log out', destroy_user_session_path, :method => :delete %>  </li>
+          </ul>
           <ul class="nav navbar-nav navbar-right">
 
             <%= link_to '/alertas/index', class: "btn btn-default" do %>
-    <i class="glyphicon glyphicon-bell"></i> 
-<% end %>
-            <%= link_to 'Sign out', destroy_user_session_path, :method => :delete %>
-            
+             <i class="glyphicon glyphicon-bell"></i> 
+            <% end %>
           </ul>
-         
         </div>
       </div>
     </nav>
       <h1>Bem vindo <%=current_user.nome %></h1>
       
       
-    <div class="container">
-  <div id="map" style='width: 800px; height: 400px;'></div>
+  <div class="maps">
+  <div id="map"></div>
     <script type="text/javascript">
       var id;
       function initMap() {

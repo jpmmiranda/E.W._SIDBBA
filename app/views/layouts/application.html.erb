@@ -23,7 +23,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="/home">SIDBBA</a>
+          <a class="navbar-brand" href="/inicial/index">SIDBBA</a>
         </div>
 
       <!-- Collect the nav links, forms, and other content for toggling -->
@@ -32,7 +32,7 @@
             <%if user_signed_in?%>
 
              <li><%= link_to current_user.email, edit_user_registration_path %> </li>
-              <li><%= link_to "Logout", destroy_user_session_path, method: :delete %> </li>
+            <li><%= link_to "Logout", destroy_user_session_path, method: :delete %> </li>
              <% else %>
             <li><a href="/users/sign_up">Signup</a></li>
             <li><a href="/users/sign_in">Login</a></li>

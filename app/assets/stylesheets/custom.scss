@@ -35,11 +35,22 @@ h1 {
 }
 body{
   background-image: image-url('fundo.jpg');
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
+  max-width: 100%;
+  height: auto;
   }
+.maps {
+    position: relative;
+    padding-bottom: 75%; // This is the aspect ratio
+    height: 0;
+    overflow: hidden;
+}
+.maps #map {
+    position: absolute;
+    top: 15%;
+    left: 15%;
+    width: 75% !important;
+    height: 50% !important;
+}
 
 input, textarea, select, .uneditable-input {
   border: 1px solid #bbb;
