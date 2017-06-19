@@ -10,7 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170605163401) do
+ActiveRecord::Schema.define(version: 20170619185235) do
+
+  create_table "alerta", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "sensor_id"
+    t.integer  "user_id"
+    t.integer  "max_temp"
+    t.integer  "min_temp"
+    t.integer  "max_luminosidade"
+    t.integer  "min_luminosidade"
+    t.integer  "max_pressao"
+    t.integer  "min_pressao"
+    t.integer  "max_humidade"
+    t.integer  "min_humidade"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+  end
 
   create_table "locais", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.decimal "local_longitude", precision: 8, scale: 6

@@ -34,7 +34,76 @@
         </div>
       </div>
     </nav>
-<h1>Alertas</h1>
-<p>Find me in app/views/alertas/index.html.erb</p>
+<h1>Os Meus Alertas</h1>
+
+<table>
+  <tr>
+	<td><%= @c %></th>
+    <th>Lista de Sensores</th>
+  </tr>
+  <tr>
+	<th>ID</th>
+	<th>Longitude</th>
+	<th>Latitude</th>
+  </tr>
+<% @sensores.each do |sensor| %>
+    <tr>
+      <td><%= sensor.id %></td>
+	  <td><%= sensor.local_longitude %></td>
+	  <td><%= sensor.local_latitude %></td>
+    </tr>
+<% end %>
+</table>
+
+<%= form_for :alerta do |f| %>
+  <p>
+    <label for="sensor_id">Sensor:</label>
+    <%= f.text_field :sensor_id,placeholder:"Por exemplo 1" %>
+  </p>
+ 
+  <p>
+    <label for="max_temp">Temperatura Máxima:</label>
+    <%= f.text_field :max_temp,placeholder:"Por exemplo 30" %>
+ </p>
+ 
+ <p>
+    <label for="min_temp">Temperatura Mínima:</label>
+    <%= f.text_field :min_temp,placeholder:"Por exemplo 10" %>
+ </p>
+ 
+  <p>
+    <label for="max_luminosidade">Luminosidade Máxima:</label>
+    <%= f.text_field :max_luminosidade,placeholder:"Por exemplo 700" %>
+ </p>
+ 
+ <p>
+    <label for="min_luminosidade">Luminosidade Mínima:</label>
+    <%= f.text_field :min_luminosidade,placeholder:"Por exemplo 200" %>
+ </p>
+
+<p>
+    <label for="max_pressao">Pressão Atmosférica Máxima:</label>
+    <%= f.text_field :max_pressao,placeholder:"Por exemplo 1500" %>
+ </p>
+ 
+ <p>
+    <label for="min_pressao">Pressão Atmosférica Mínima:</label>
+    <%= f.text_field :min_pressao,placeholder:"Por exemplo 300" %>
+ </p>
+ 
+ <p>
+    <label for="max_humidade">Humidade Máxima:</label>
+    <%= f.text_field :max_humidade,placeholder:"Por exemplo 80" %>
+ </p>
+ 
+ <p>
+    <label for="min_humidade">Humidade Mínima:</label>
+    <%= f.text_field :min_humidade,placeholder:"Por exemplo 20" %>
+ </p>
+ 
+  <p>
+    <%= f.submit :"Guardar Alterações" %>
+  </p>
+<% end %>
  </body>
 </html>

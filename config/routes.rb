@@ -7,6 +7,8 @@ Rails.application.routes.draw do
     end
   end
   
+  post 'alertas/index' => "alertas#create"
+  
   get 'locais/index'
 
   get 'historico/index'
