@@ -5,13 +5,12 @@ class Api::V1::RegistosController < ApplicationController
 
   def show
 
-        @registo = Registo.find(params[:id])
-        render json: @registo
-      end
+    @registo = Registo.find(params[:id])
+    render json: @registo
+  end
 
   def create
    registo=Registo.new(local_params) 
-        # if the user is saved successfully than respond with json data and status code 201
    if registo.save 
     render json: registo, status: 201
    else
@@ -21,7 +20,7 @@ class Api::V1::RegistosController < ApplicationController
 
   private
   def local_params
-   params.permit(:temperatura, :ruido,:humidade,:data,:local_id) 
+   params.permit(:temperatura, :luminosidade,:humidade,:pressao,:data,:local_id) 
   end
 
 end

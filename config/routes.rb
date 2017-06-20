@@ -20,8 +20,9 @@ Rails.application.routes.draw do
   get 'inicial/index'
 
   get 'historico/historicoTemperatura' => 'historico#historicoTemperatura'
-  get 'historico/historicoRuido' => 'historico#historicoRuido'
+  get 'historico/historicoLuminosidade' => 'historico#historicoLuminosidade'
   get 'historico/historicoHumidade' => 'historico#historicoHumidade'
+  get 'historico/historicoPressao' => 'historico#historicoPressao'
 
 
   devise_for :users, :controllers => { registrations: 'registrations' }

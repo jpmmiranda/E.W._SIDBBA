@@ -35,26 +35,34 @@
       </div>
     </nav>
 <h1>Os Meus Alertas</h1>
-
-<table>
-  <tr>
-	<td><%= @c %></th>
+<tr>
+  <td><%= @c %></td>
     <th>Lista de Sensores</th>
   </tr>
   <tr>
-	<th>ID</th>
-	<th>Longitude</th>
-	<th>Latitude</th>
-  </tr>
-<% @sensores.each do |sensor| %>
-    <tr>
-      <td><%= sensor.id %></td>
-	  <td><%= sensor.local_longitude %></td>
-	  <td><%= sensor.local_latitude %></td>
-    </tr>
-<% end %>
-</table>
+<div class="panel panel-primary ">
 
+<table class="table">
+  
+  <thead>
+    <tr>
+    	 <th><span class="text">ID</th>
+    	 <th><span class="text">Longitude</th>
+    	 <th><span class="text">Latitude</th>
+    </tr>
+  </thead>
+    <tbody>
+    <% @sensores.each do |sensor| %>
+        <tr>
+        <td><%= sensor.id %></td>
+    	  <td><%= sensor.local_longitude %></td>
+    	  <td><%= sensor.local_latitude %></td>
+        </tr>
+    <% end %>
+        </tbody>
+
+</table>
+</div>
 <%= form_for :alerta do |f| %>
   <p>
     <label for="sensor_id">Sensor:</label>

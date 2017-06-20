@@ -3,8 +3,9 @@ class Registos < ActiveRecord::Migration[5.0]
 
     create_table :registos do |t|
       t.integer :temperatura
-      t.integer :ruido
+      t.integer :luminosidade
       t.integer :humidade
+      t.integer :pressao
       t.string :data
       t.integer :local_id
   end

@@ -5,7 +5,7 @@ class AlertasController < ApplicationController
 	
   def index
     @c =current_user.id
-	@sensores=Locai.all
+	  @sensores=Locai.all
   end
   
   def create

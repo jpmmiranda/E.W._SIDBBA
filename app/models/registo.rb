@@ -2,7 +2,6 @@ class Registo < ActiveRecord::Base
 
 
 	def self.getRegistos(id)
-		
 		valores=Registo.where(local_id: id).order('data DESC').first
 		valores
 	end
@@ -12,9 +11,14 @@ class Registo < ActiveRecord::Base
 		temp
 	end
 
-	def valoresRuido
-		r=Registo.group("day(data)").group("month(data)").average(:ruido)
-		r
+	def valoresLuminosidade
+		l=Registo.group("day(data)").group("month(data)").average(:luminosidade)
+		l
+	end
+
+	def valoresPressao
+		p=Registo.group("day(data)").group("month(data)").average(:pressao)
+		p
 	end
 
 	def valoresHumidade

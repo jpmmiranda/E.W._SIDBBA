@@ -4,22 +4,26 @@
 
 <div class="row">
   <div class="col-sm-6">
-     <strong>Temperaturas:</strong>
-         <%=line_chart historico_historicoTemperatura_path(id: params[:id])%>
+         <%=line_chart historico_historicoTemperatura_path(id: params[:id]),{library: {hAxis: {title: "Dias"}, vAxis: {title: "Graus"},title: "Temperatura"}}%>
   </div>
 
   <div class="col-sm-6">
-     <strong>Humidade:</strong>
-         <%=line_chart historico_historicoHumidade_path(id: params[:id])%>
+         <%=line_chart historico_historicoHumidade_path(id: params[:id]),{library: {hAxis: {title: "Dias"}, vAxis: {title: "%"},title: "Humidade"}}%>
   </div>
 	
- </div>
+</div>
+
+<div> 
+<p></p>
+</div>
 
 <div class="row">
   <div class="col-sm-6">
-     <strong>Ruido:</strong>
-         <%=line_chart historico_historicoRuido_path(id: params[:id])%>
+         <%=line_chart historico_historicoLuminosidade_path(id: params[:id]),{library: {hAxis: {title: "Dias"}, vAxis: {title: "Candela"},title: "Luminosidade"}}%>
   </div>
+  <div class="col-sm-6">
+         <%=line_chart historico_historicoPressao_path(id: params[:id]),{library: {hAxis: {title: "Dias"}, vAxis: {title: "mb"},title: "Pressão"}}%>
+  </div>
+  <div class="clearfix"></div>
 
-  
  </div>

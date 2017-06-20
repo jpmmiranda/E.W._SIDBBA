@@ -8,9 +8,10 @@ class InicialController < ApplicationController
 	     marker.lng record.local_longitude
 	     unless @va.blank?
 	     marker.json({ :id => record.id,  infowindow: '<h5>'+'Ultimos Registos:'+'</h5>' +
-	                '<p>Temperatura: '+@va[:temperatura].to_s+'</p>' +
-	                '<p>Ruído: '+@va[:ruido].to_s+'</p>' +
-	                '<p>Humidade: '+@va[:humidade].to_s+'</p>' +'<button class= btn btn-info onclick="verHistorico('+record.id.to_s+')">Ver histórico</button>' })  
+	                '<p>Temperatura: '+@va[:temperatura].to_s+' ºC</p>' +
+	                '<p>Luminosidade: '+@va[:luminosidade].to_s+' cd</p>' +
+	                '<p>Pressão: '+@va[:pressao].to_s+' mb</p>' +
+	                '<p>Humidade: '+@va[:humidade].to_s+' %</p>' +'<button class= btn btn-info onclick="verHistorico('+record.id.to_s+')">Ver histórico</button>' })  
 	     end
  		end
 	end

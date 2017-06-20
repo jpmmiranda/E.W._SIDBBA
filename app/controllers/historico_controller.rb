@@ -9,8 +9,12 @@ class HistoricoController < ApplicationController
         render json: @registo.valoresTemperatura
     end
 
-    def historicoRuido
-        render json: @registo.valoresRuido
+    def historicoPressao
+        render json: @registo.valoresPressao
+    end
+
+    def historicoLuminosidade
+        render json: @registo.valoresLuminosidade
     end
 
     def historicoHumidade

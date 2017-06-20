@@ -34,8 +34,9 @@ ActiveRecord::Schema.define(version: 20170619185235) do
 
   create_table "registos", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "temperatura"
-    t.integer "ruido"
+    t.integer "luminosidade"
     t.integer "humidade"
+    t.integer "pressao"
     t.string  "data"
     t.integer "local_id"
   end

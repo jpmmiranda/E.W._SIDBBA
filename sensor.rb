@@ -11,31 +11,33 @@ class Sensor
   end
 
   def enviaCoords
-    @urlstring_to_post = 'http://localhost:3000/api/v1/locais/?local_latitude='+@latitude+'&local_longitude='+@longitude
+    @urlstring_to_post = 'http://localhost:3000/api/v1/locais/?local_longitude='+@longitude+'&local_latitude='+@latitude
     @result = HTTParty.post(@urlstring_to_post.to_str)
     geraDados
   end
 
   def geraDados
-  	readingTemp = rand(30)
-    readingNoise = rand(300) 
-    readingHumidity = rand(100)
-
+  	temp = rand(50)
+    lum = rand(400..700) 
+    hum = rand(100)
+    pres = rand(900..1100)
 		while true do
-			sleep 1
 			if(rand(2) == 1)
-				readingTemp += 1
-        readingNoise += 50
-        readingHumidity += 20
+				temp += 1
+        lum += 10
+        hum += 1
+        pres +=10
 			else
-        readingTemp -= 1
-        readingNoise -= 50
-        readingHumidity -= 20	
+        temp -= 1
+        lum -= 10
+        hum -= 1
+        pres -=10	
       end
       time = Time.now.getutc
-      @urlstring_to_post = 'http://localhost:3000/api/v1/registos/?temperatura='+readingTemp.to_s + 
-        '&ruido=' + readingNoise.to_s + '&humidade='+ readingHumidity.to_s + '&data=' + time.to_s + '&local_id=' + @id
+      @urlstring_to_post = 'http://localhost:3000/api/v1/registos/?temperatura='+temp.to_s+'&luminosidade=' + lum.to_s + '&humidade='+ hum.to_s  + '&pressao=' + pres.to_s + '&data=' + time.to_s + '&local_id=' + @id
       @result = HTTParty.post(@urlstring_to_post.to_str)
+      
+      sleep 1
 
 		end
 

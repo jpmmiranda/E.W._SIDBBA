@@ -5,13 +5,12 @@ class Api::V1::LocaisController < ApplicationController
 
   def show
 
-        @album = Locai.find(params[:id])
-        render json: @album
-      end
+    @album = Locai.find(params[:id])
+    render json: @album
+  end
 
   def create
    local=Locai.new(local_params) 
-        # if the user is saved successfully than respond with json data and status code 201
    if local.save 
     render json: local, status: 201
    else
