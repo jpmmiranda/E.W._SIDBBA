@@ -28,7 +28,7 @@
           </button>
           <a class="navbar-brand" href="/inicial/index">SIDBBA</a>
         </div>
-
+		
       <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 
@@ -46,8 +46,12 @@
       </div>
     </nav>
       <h1>Bem vindo <%=current_user.nome %></h1>
-      
-      
+      <div class="container">
+		<% flash.each do |key, value| %>
+			<div class="alert alert-<%= key %>"><%= value %></div>
+		<% end %>
+		<%= yield %>
+	</div>
   <div class="maps">
   <div id="map"></div>
     <script type="text/javascript">

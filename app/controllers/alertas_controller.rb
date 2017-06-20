@@ -1,5 +1,5 @@
 class AlertasController < ApplicationController
-  
+  add_flash_types :success
   def show
   end
 	
@@ -13,6 +13,7 @@ class AlertasController < ApplicationController
 	@alerta.user_id = current_user.id
 	Alerta.where(user_id: current_user.id, sensor_id: @alerta.sensor_id).destroy_all
 	if @alerta.save
+		flash[:success] = "Os Meus Alertas foram guardados com successo."
 		redirect_to '/inicial/index'
 	else
 		render '/alertas/index'
