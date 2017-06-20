@@ -36,7 +36,6 @@
     </nav>
 <h1>Os Meus Alertas</h1>
 <tr>
-  <td><%= @c %></td>
     <th>Lista de Sensores</th>
   </tr>
   <tr>
@@ -66,7 +65,7 @@
 <%= form_for :alerta do |f| %>
   <p>
     <label for="sensor_id">Sensor:</label>
-    <%= f.text_field :sensor_id,placeholder:"Por exemplo 1" %>
+    <%= f.text_field :sensor_id,placeholder:"ID do Sensor" %>
   </p>
  
   <p>

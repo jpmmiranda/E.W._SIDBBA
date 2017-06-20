@@ -4,14 +4,14 @@ class AlertasController < ApplicationController
   end
 	
   def index
-    @c =current_user.id
-	  @sensores=Locai.all
+	@sensores=Locai.all
   end
   
   def create
-	#redirect_to '/inicial/index'
+	
 	@alerta = Alerta.new(alertas_params)
 	@alerta.user_id = current_user.id
+	Alerta.where(user_id: current_user.id, sensor_id: @alerta.sensor_id).destroy_all
 	if @alerta.save
 		redirect_to '/inicial/index'
 	else
