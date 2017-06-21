@@ -4,47 +4,50 @@ class InicialController < ApplicationController
 	def index
 		count=0
 		user_id1 = current_user.id
+		@sensores = Locai.all
 		
-		@leituras1=Registo.group('"local_id"')
-		@leituras = Registo.group('"local_id"').having('data = MAX(data)')
-		
+		@leituras1 = Registo.group('local_id').order('data DESC')
+	
 		@leituras1.each do |leitura|
-			Alerta.all.each do |alerta|
-				if alerta.user_id==user_id1 && leitura.local_id==alerta.sensor_id
-					if leitura.temperatura <= alerta.max_temp && leitura.temperatura >= alerta.min_temp
-						if count==0
-							flash[:success] = "Alerta Temperatura No Sensor #{leitura.local_id} --- "
-							count=1
-						else
-							flash[:success] << "Alerta Temperatura No Sensor #{leitura.local_id} --- "
+			if (((leitura.data).to_time.to_i - (Time.current.to_date).to_time.to_i) < 30*60*60)
+				Alerta.all.each do |alerta|
+					if alerta.user_id==user_id1 && leitura.local_id==alerta.sensor_id
+						if leitura.temperatura <= alerta.max_temp && leitura.temperatura >= alerta.min_temp
+							if count==0
+								flash[:success] = "Alerta Temperatura No Sensor #{leitura.local_id} --- "
+								count=1
+							else
+								flash[:success] << "Alerta Temperatura No Sensor #{leitura.local_id} --- "
+							end
 						end
-					end
-					if leitura.luminosidade <= alerta.max_luminosidade && leitura.luminosidade >= alerta.min_luminosidade
-						if count==0
-							flash[:success] = "alerta luminosidade No Sensor #{leitura.local_id} --- "
-							count=1
-						else
-							flash[:success] << "alerta luminosidade No Sensor #{leitura.local_id} --- "
+						if leitura.luminosidade <= alerta.max_luminosidade && leitura.luminosidade >= alerta.min_luminosidade
+							if count==0
+								flash[:success] = "Alerta Luminosidade No Sensor #{leitura.local_id} --- "
+								count=1
+							else
+								flash[:success] << "Alerta Luminosidade No Sensor #{leitura.local_id} --- "
+							end
 						end
-					end
-					if leitura.humidade <= alerta.max_humidade && leitura.humidade >= alerta.min_humidade
-						if count==0
-							flash[:success] = "alerta humidade No Sensor #{leitura.local_id} --- "
-							count=1
-						else
-							flash[:success] << "alerta humidade No Sensor #{leitura.local_id} --- "
+						if leitura.humidade <= alerta.max_humidade && leitura.humidade >= alerta.min_humidade
+							if count==0
+								flash[:success] = "Alerta Humidade No Sensor #{leitura.local_id} --- "
+								count=1
+							else
+								flash[:success] << "Alerta Humidade No Sensor #{leitura.local_id} --- "
+							end
 						end
-					end
-					if leitura.pressao <= alerta.max_pressao && leitura.pressao >= alerta.min_pressao
-						if count==0
-							flash[:success] = "alerta pressao No Sensor #{leitura.local_id} --- "
-							count=1
-						else
-							flash[:success] << "alerta pressao No Sensor #{leitura.local_id} --- "
+						if leitura.pressao <= alerta.max_pressao && leitura.pressao >= alerta.min_pressao
+							if count==0
+								flash[:success] = "Alerta Pressão No Sensor #{leitura.local_id} --- "
+								count=1
+							else
+								flash[:success] << "Alerta Pressão No Sensor #{leitura.local_id} --- "
+							end
 						end
 					end
 				end
 			end
+			#end
 		end
 	  	 @hash = Gmaps4rails.build_markers(Locai.all) do |record, marker|
 	  	 getValores(record.id)
