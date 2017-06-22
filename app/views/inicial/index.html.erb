@@ -36,13 +36,13 @@
 
             <li><%= link_to 'Log out', destroy_user_session_path, :method => :delete %>  </li>
           </ul>
-		  <ul class="nav navbar-nav navbar-right">
+		  <ul class="nav navbar-nav" style="margin-left: 1090px;margin-top: 8px;">
 
             <%= link_to '/alertas_pessoais/index', class: "btn btn-default" do %>
              <i class="glyphicon glyphicon-pushpin"></i> 
             <% end %>
           </ul>
-          <ul class="nav navbar-nav navbar-right">
+          <ul class="nav navbar-nav navbar-right" style="margin-top: 8px;">
 
             <%= link_to '/alertas/index', class: "btn btn-default" do %>
              <i class="glyphicon glyphicon-bell"></i> 
@@ -52,11 +52,7 @@
       </div>
     </nav>
       <h1>Bem vindo <%=current_user.nome %></h1>
-	  <div class="container">
-	  <% @leituras1.each do |c| %>
-			<%= c.data %>
-		<% end %>
-		</div>
+	  
       <div class="container">
 		<% flash.each do |key, value| %>
 			<div class="alert alert-<%= key %>"><%= value %></div>
