@@ -2,13 +2,18 @@ class InicialController < ApplicationController
   respond_to :js, :html
 
 	def index
+		apresentaAlerta
+	  	criaMapa	
+	end
+
+	def apresentaAlerta
 		count=0
 		user_id1 = current_user.id
 		@sensores = Locai.all
 		
 		@leituras1 =  User.find_by_sql("SELECT sidbba_development.registos.* FROM sidbba_development.registos 
-  JOIN (SELECT local_id, max(data) data FROM sidbba_development.registos GROUP BY local_id) as t2
-    ON sidbba_development.registos.local_id = t2.local_id AND sidbba_development.registos.data = t2.data;")
+  		JOIN (SELECT local_id, max(data) data FROM sidbba_development.registos GROUP BY local_id) as t2
+    	ON sidbba_development.registos.local_id = t2.local_id AND sidbba_development.registos.data = t2.data;")
 
 
 	
@@ -53,12 +58,12 @@ class InicialController < ApplicationController
 						end
 					end
 				end
-			end
-			#end
-	
-
+			end	
 		end
-	  	 @hash = Gmaps4rails.build_markers(Locai.all) do |record, marker|
+	end
+
+	def criaMapa
+		 @hash = Gmaps4rails.build_markers(Locai.all) do |record, marker|
 	  	 getValores(record.id)
 	     marker.lat record.local_latitude
 	     marker.lng record.local_longitude
@@ -70,7 +75,6 @@ class InicialController < ApplicationController
 	                '<p>Humidade: '+@va[:humidade].to_s+' %</p>' +'<button class= btn btn-info onclick="verHistorico('+record.id.to_s+')">Ver histórico</button>' })  
 	     end
  		end
- 		
 	end
 
 	def getValores(id)
