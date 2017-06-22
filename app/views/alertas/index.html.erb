@@ -31,6 +31,12 @@
 
             <li><%= link_to 'Log out', destroy_user_session_path, :method => :delete %>  </li>
           </ul>
+		  <ul class="nav navbar-nav navbar-right">
+
+            <%= link_to '/alertas_pessoais/index', class: "btn btn-default" do %>
+             <i class="glyphicon glyphicon-pushpin"></i> 
+            <% end %>
+          </ul>
         </div>
       </div>
     </nav>

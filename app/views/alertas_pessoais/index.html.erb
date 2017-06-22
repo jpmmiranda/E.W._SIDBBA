@@ -1,3 +1,4 @@
+
 <html>
 
   <head>
@@ -30,6 +31,12 @@
           <ul class="nav navbar-nav navbar-right">
 
             <li><%= link_to 'Log out', destroy_user_session_path, :method => :delete %>  </li>
+          </ul>
+		  <ul class="nav navbar-nav navbar-right">
+
+            <%= link_to '/alertas/index', class: "btn btn-default" do %>
+             <i class="glyphicon glyphicon-bell"></i> 
+            <% end %>
           </ul>
         </div>
       </div>
