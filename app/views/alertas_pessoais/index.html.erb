@@ -61,7 +61,7 @@
       <tbody>
       <% @alertas.each do |alerta| %>
           <tr>
-          <td><%= alerta.id %>  </td>
+          <td><%= alerta.sensor_id %>  </td>
             <% @local.each do |l| %>
         <%if l.id == alerta.sensor_id %>
            <td><%= l.local_longitude %>  </td>
