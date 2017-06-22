@@ -1,0 +1,76 @@
+<html>
+
+  <head>
+    <%= csrf_meta_tags %>
+    <%= stylesheet_link_tag    'application', media: 'all',
+                                              'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <!--[if lt IE 9]>
+      <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/r29/html5.min.js">
+      </script>
+    <![endif]-->
+  </head>
+  <body>
+    <nav class="navbar navbar-default navbar-fixed-top navbar-inverse">
+      <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/inicial/index">SIDBBA</a>
+        </div>
+
+      <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+
+          <ul class="nav navbar-nav navbar-right">
+
+            <li><%= link_to 'Log out', destroy_user_session_path, :method => :delete %>  </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  <h1>Os Meus Alertas</h1>
+
+  <div class="panel panel-primary ">
+
+  <table class="table">
+    
+    <thead>
+      <tr>
+      	 <th><span class="text">Sensor</th>
+         <th><span class="text">Longitude</th>
+         <th><span class="text">Latitude</th>
+      	 <th><span class="text">Temperatura</th>
+      	 <th><span class="text">Luminosidade</th>
+         <th><span class="text">Pressao</th>
+         <th><span class="text">Humidade</th>
+      </tr>
+    </thead>
+      <tbody>
+      <% @alertas.each do |alerta| %>
+          <tr>
+          <td><%= alerta.id %>  </td>
+            <% @local.each do |l| %>
+        <%if l.id == alerta.sensor_id %>
+           <td><%= l.local_longitude %>  </td>
+           <td><%= l.local_latitude %>  </td>
+        <% end %>
+       <% end %>
+          <td>[<%= alerta.min_temp.to_s %>,<%= alerta.max_temp.to_s %>]  </td>
+          <td>[<%= alerta.min_luminosidade.to_s %>,<%= alerta.max_luminosidade.to_s %>]  </td>
+          <td>[<%= alerta.min_pressao.to_s %>,<%= alerta.max_pressao.to_s %>]  </td>
+          <td>[<%= alerta.min_humidade.to_s %>,<%= alerta.max_humidade.to_s %>]  </td>          
+          </tr>
+      <% end %>
+          </tbody>
+
+  </table>
+  </div>
+ 
+   </body>
+</html>
